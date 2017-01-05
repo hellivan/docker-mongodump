@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  backup:
+    image: hellivan/mongodump
+    environment:
+      - MONGO_HOST=db
+    volumes:
+      - backups:/backup-data
+    depends_on:
+      - db
+
+volumes:
+  backups:
+    driver: local
