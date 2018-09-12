@@ -1,4 +1,4 @@
-FROM mongo:3.4.1
+FROM mongo:4.0.2
 
 VOLUME /backup-data
 
