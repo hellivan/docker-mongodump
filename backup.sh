@@ -22,8 +22,9 @@ fi
 
 TS=$(date '+%Y.%m.%d_%H.%M.%S')
 
+TAR_FILE_NAME="${FILE_NAME}_${TS}"
 OUTDIR="${FILE_NAME}_${TS}"
 
-mongodump --host "${MONGO_HOST}" --port "${MONGO_PORT}" -o "${OUTDIR}" &&\
-	tar -czf "/backup-data/${OUTDIR}.tar.gz" "${OUTDIR}" &&\
+mongodump --host "${MONGO_HOST}" --port "${MONGO_PORT}" -o "${OUTDIR}/dump" &&\
+	tar -C "${OUTDIR}" -czf "/backup-data/${TAR_FILE_NAME}.tar.gz" ./ &&\
 	rm -rf "${OUTDIR}"
